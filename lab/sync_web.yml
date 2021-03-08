@@ -1,0 +1,44 @@
+- hosts: web[0]
+  tasks:
+  - name: "copy website"
+    copy:
+      src: site/
+      dest: /var/www/default
+  - name: host01
+    become: yes
+    become_user: root
+    replace: 
+      path: /var/www/default/index.html
+      regexp: 'Poomphat Wawongmoon 61070170'
+      replace: Hello
+      backup: yes
+
+- hosts: web[1]
+  tasks:
+  - name: "copy website"
+    copy:
+      src: site/
+      dest: /var/www/default
+  - name: host01
+    become: yes
+    become_user: root
+    replace: 
+      path: /var/www/default/index.html
+      regexp: 'Poomphat Wawongmoon 61070170'
+      replace: Hello world
+      backup: yes
+
+- hosts: web[2]
+  tasks:
+  - name: "copy website"
+    copy:
+      src: site/
+      dest: /var/www/default
+  - name: host01
+    become: yes
+    become_user: root
+    replace: 
+      path: /var/www/default/index.html
+      regexp: 'Poomphat Wawongmoon 61070170'
+      replace: Hello world Number2
+      backup: yes
